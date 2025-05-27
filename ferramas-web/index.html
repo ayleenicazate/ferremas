@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio - Ferremas</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/images/ferre.png" />
+  </head>
+
+  <body>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Carrito de Compras</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body" id="offcanvas-body-carrito">
+        <!-- Aquí se insertan los productos -->
+      </div>
+      <div class="px-3 pb-3 border-top">
+        <p id="ahorroTexto" class="text-danger fw-bold"></p>
+        <p id="totalTexto" class="fw-bold"></p>
+        <button
+          class="btn btn-primary w-100 mt-2"
+          onclick="window.location.href='carrito.html'"
+        >
+          Ver carrito
+        </button>
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <!-- Carrusel de ofertas -->
+      <div
+        id="product-carousel"
+        class="carousel slide mb-4"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active" id="banner-oferta">
+            <a href="#" id="open-login">
+              <img
+                src="assets/images/ferremas-oferta.gif"
+                class="d-block w-100"
+                alt="Logo Ferremas"
+              />
+            </a>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets\images\0505110005_Slider-PrincipalMayo.png"
+              class="d-block w-100"
+              alt="Producto 1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/images/banner.jpg"
+              class="d-block w-100"
+              alt="Producto 2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/images/C_Invierno_desk_15-21abr.avif"
+              class="d-block w-100"
+              alt="Producto 3"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#product-carousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#product-carousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+
+      <!-- Barra de búsqueda -->
+      <div class="mb-4">
+        <input
+          id="input-busqueda"
+          class="form-control"
+          placeholder="Buscar productos..."
+        />
+      </div>
+
+      <div
+        id="banner-descuento"
+        class="text-success text-center fw-bold mb-3"
+      ></div>
+
+      <!-- Cards de productos -->
+      <div class="row" id="productos-container"></div>
+
+      <div id="loader-placeholder"></div>
+
+      <div class="text-center mt-4">
+        <button id="ver-mas-btn" class="btn btn-outline-primary">
+          <i class="bi bi-chevron-down"></i> Ver más productos
+        </button>
+      </div>
+    </div>
+
+    <div id="paypal-container" style="display: none; padding: 20px; width: 40%">
+      <h4>Finaliza tu compra con PayPal</h4>
+      <div id="paypal-button-container"></div>
+    </div>
+    <!-- Modal de "no se encontraron productos" -->
+    <div
+      class="modal fade"
+      id="modalNoResultados"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header bg-warning text-dark">
+            <h5 class="modal-title">¡Oops!</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>No encontramos nada con ese criterio 🤔</p>
+            <p>¿Probamos con otra palabra mágica?</p>
+            <img
+              src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDQ4aG9rMDdnYzczbmJvdmVtNGR1cDk5NHlzOTk1ejNqd2ExMDdxbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0xepPNrcXWOlNvJm/giphy.gif"
+              class="img-fluid"
+              style="max-height: 150px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const banner = document.getElementById("banner-oferta");
+
+        if (user && banner) {
+          banner.remove(); // o puedes usar banner.style.display = "none";
+        }
+      });
+    </script>
+
+
+    <div id="moneda-loader" style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    ">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    <span style="margin-left: 1rem;">Cambiando moneda...</span>
+    </div>
+
+  </body>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="src/js/moneda.js"></script>
+  <script src="src/js/carrito.js"></script>
+  <script src="src/js/navbar.js"></script>
+  <script src="src/js/loginModal.js"></script>
+  <script src="src/js/registerModal.js"></script>
+  <script src="src/js/loadProducts.js"></script>
+  <script src="src/js/footer.js"></script>
+
+</html>

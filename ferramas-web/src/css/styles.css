@@ -1,0 +1,77 @@
+/* Estilos generales */
+body {
+  background-image: url("https://images.unsplash.com/photo-1585747889842-2990e19cd7ee?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* ← Esto hace que el fondo sea estático */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  padding-top: 110px; /* Ajusta según el alto real del navbar */
+}
+
+/* Estilo para la tarjeta de login */
+.card {
+  border-radius: 10px;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Encabezados */
+.card-header h4 {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Ajustar tamaño de las imágenes del carrusel */
+#product-carousel .carousel-inner img {
+  max-width: 100%; /* No superar el ancho del contenedor */
+  height: 500px; /* Altura máxima de 100px */
+  object-fit: contain; /* Ajustar la imagen sin deformarla */
+}
+
+header h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem; /* Tamaño grande para llamar la atención */
+  font-weight: 700; /* Negrita */
+  color: #ffffff; /* Mantener el color blanco */
+}
+
+.img-ajustada {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.container {
+  background-color: rgba(2, 1, 1, 0.699); /* blanco con 85% de opacidad */
+}
+
+.container.mt-4 {
+  margin-top: 0 !important;
+}
+
+.img {
+  object-fit: contain;
+  height: 500px; /* ajusta según tu diseño */
+  background-color: white; /* evita bordes negros */
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+      height: 300px;
+      padding: 10px;
+    }
+  }

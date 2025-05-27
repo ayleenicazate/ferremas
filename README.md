@@ -63,9 +63,7 @@ ferremas/
    pip install -r requirements.txt
    ```
 
-3. Crea el archivo `.env` con los datos de conexión (basado en `.env.example` si existe).
-
-4. Importa la base de datos en XAMPP:
+3. Importa la base de datos en XAMPP:
 
    - Abre **XAMPP Control Panel**
    - Inicia **MySQL**
